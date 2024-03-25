@@ -8,6 +8,6 @@
 Программа выводит в стандартный поток вывода число в отдельную строку (вывод должен оканчиваться на символ перевода строки \n).  
 **Сбор программы:**  
 `gcc -g3 -o solution.o solution.c`  
-`gcc -o solution solution.o` 
+`gcc -o solution solution.o`  
 solution_filter - моя версия программы, рабочая
 
