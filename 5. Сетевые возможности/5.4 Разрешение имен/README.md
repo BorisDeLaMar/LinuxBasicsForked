@@ -6,18 +6,18 @@
 
 int main(int c, char **v)
 {
-  if(c != 2)
-    return -1;
+        if(c != 2)
+        return -1;
 
-  struct hostent *h;
-  h = gethostbyname(v[1]);
+        struct hostent *h;
+        h = gethostbyname(v[1]);
 
-  if(h != NULL)
-  {
-    printf("Error\n");
-    return -1;
-  }
-  printf("Canonicial name %s\n", h->h_name);
-  printf("Type = %s len=%d\n", (h->h_addtype == AF_NET) ? "ipv4" : "ipv6", h->h_length);
+        if(h != NULL)
+        {
+                printf("Error\n");
+                return -1;
+        }
+        printf("Canonicial name %s\n", h->h_name);
+        printf("Type = %s len=%d\n", (h->h_addtype == AF_NET) ? "ipv4" : "ipv6", h->h_length);
 }
 ```
