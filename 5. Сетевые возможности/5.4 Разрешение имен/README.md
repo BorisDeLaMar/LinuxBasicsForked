@@ -12,7 +12,7 @@ int main(int c, char **v)
         struct hostent *h;
         h = gethostbyname(v[1]);
 
-        if(h != NULL)
+        if(h == NULL)
         {
                 printf("Error\n");
                 return -1;
