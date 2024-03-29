@@ -32,24 +32,24 @@
 #include <stdio.h>
 #include <signal.h>
 #include <unistd.h>
-
+	
 void mysignal_handler(int signalno)
 {
-  printf("Called with %d\n", signalno);
+	printf("Called with %d\n", signalno);
 }
 
 int main(int argc, char *argv[])
 {
-  int c = 0;
+	int c = 0;
 
-  signal(SIGINT, mysignal_handler);
+	signal(SIGINT, mysignal_handler);
 
-  while(1)
-  {
-    printf("Hello %d\n", c++);
-    usleep(500000);
-  }
-  return 0;
+	while(1)
+	{
+		printf("Hello %d\n", c++);
+		usleep(500000);
+  	}
+	return 0;
 }
 ```
 При запуске такое программы на ctrl+C программа лишь выведет текст из функции `mysignal_handler`. 
