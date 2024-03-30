@@ -53,10 +53,25 @@ opindex - индекс опции в командной строке. Нужно
 				printf("(c) Friedrich Nietzsche\n");
 				break;
 			default:
-				printf("optchar: %c\n", opchar);
+				printf("optchar: %c\n", opchar); // Если встретили какую-то неописанную опцию
 		}
 	}
 
-	
+	if(strlen(string) > length && 0 != length)
+		string[length] = '\0';
+	if(is_brackets)
+		printf("[%s]\n", string);
+	else
+		printf("%s\n", string)
+
+	printf("Done.\n");
 }
 ```
+*NB getopt проверяет соответствие того, что введено на однозначность поиска в списке опций. Если имя уникально, то используется опция, 
+которая ближе всего подходит. Т.е. `./quotation -a`, `./quotation --authornameshouldbeprinted` и `./quotation --authornameshouldb` 
+выполнятся одинаково программой выше.  
+`./quotation --authornameshouldb -a -a -a` выведет автора 4 раза.  
+`./quotation --brackets -b -b -b` выдаст 4 раза 0 (4 раза были в этом `case`), но в скобки обернет только 1 раз  
+`./quotation -l 18` и `./quotation -l18` отработают одинаково, в коротких опциях такая запись допускается.  
+`./quotation -al18` или `./quotation -a -l18`- и обрежем, и автора укажем  
+`./quotation -l18a` - `a` не отработает, т.к. все, что находится после `l` пытаемся превратить в число по коду
